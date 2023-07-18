@@ -43,9 +43,7 @@ export default {
 
 const ProfileFetcher = findByProps("fetchProfile", "getUser");
 
-UserStore.getUser(userId)
-  ? Profiles.showUserProfile({ userId })
-  : ProfileFetcher.getUser(userId).then(() => Profiles.showUserProfile({ userId }))
+ ProfileFetcher.getUser(userId).then(() => Profiles.showUserProfile({ userId }))
 
                 const pronoun: string = "test";
                 if (storage.isTimestamp && row.message.timestamp) {
