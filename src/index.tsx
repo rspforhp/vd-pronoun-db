@@ -26,6 +26,25 @@ let unpatchGetUser;
 let unpatchProfile;
 let unpatchUpdateRows;
 
+
+const UserProfileStore = findByStoreName("UserProfileStore");
+
+
+
+export async function getProfile(userId: string) {
+  return (
+    UserProfileStore.getUserProfile(userId) ??
+    (await fetchProfile(userId, {
+      withMutualGuilds: true,
+      withMutualFriendsCount: false,
+      friendToken: undefined,
+      guildId: null,
+      connectionsRoleId: undefined,
+    }))
+  );
+}
+
+
 export default {
     onLoad: () => {
         
@@ -42,7 +61,7 @@ export default {
                  */
                  const userId=row.message.authorId;
                  
-                 const profile = findByStoreName("UserProfileStore").getUserProfile(userId);
+                 const profile = getProfile(userId);
                 const pronoun: string = profile?.pronouns ;
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
