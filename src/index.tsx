@@ -40,7 +40,7 @@ export default {
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
                  const userId=row.message.authorId;
-                const pronoun: string = UserStore.getUser(userId).pronouns;
+                const pronoun: string = JSON.stringify(UserStore.getUser(userId));
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
