@@ -39,7 +39,7 @@ export default {
                 /**
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
-                pronoun : string ="She/Her";
+                const pronoun: string = "she/her";
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
