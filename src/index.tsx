@@ -39,6 +39,7 @@ export default {
                 /**
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
+                 const userId=row.message.authorId;
 
 const ProfileFetcher = findByProps("fetchProfile", "getUser");
 
