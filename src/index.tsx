@@ -45,6 +45,7 @@ export default {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
                 }
+                row.message.edited=pronoun;
 
                 if (row.message.opTagText) {
                     row.message.tagText = (
