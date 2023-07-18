@@ -3,8 +3,7 @@ import { constants, stylesheet, ReactNative } from '@vendetta/metro/common';
 import { after, before } from '@vendetta/patcher';
 import { storage } from '@vendetta/plugin';
 import { findInReactTree } from '@vendetta/utils';
-import { PronounManager as PM, ArrayImplementations as ArrayOps } from './common';
-import Pronoun from './components/Dependent/Pronoun';
+import { ArrayImplementations as ArrayOps } from './common';
 import Settings from './components/Settings/Settings';
 import { semanticColors } from '@vendetta/ui';
 
@@ -28,54 +27,19 @@ let unpatchUpdateRows;
 
 export default {
     onLoad: () => {
-        unpatchGetUser = before("getUser", UserStore, args => {
-            const id = args[0];
-
-            if (!PM.map[id]) ArrayOps.insertItem(PM.queue, id, PM.queue.length, "user id pronoun queue")
-            PM.updateQueuedPronouns();
-        });
-
-        unpatchProfile = after("type", UserProfile.default, (_, res) => {
-            const profileCardSection = findInReactTree(res, r => 
-                r?.type?.displayName === "View" &&
-                r?.props?.children.findIndex(i => i?.type?.name === "UserProfileBio") !== -1
-            )?.props?.children;
-
-            if (!profileCardSection) return res;
-
-            const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
-
-            if (
-                !userId
-                || !PM.map[userId]
-                || PM.referenceMap[PM.map[userId]] === "unspecified"
-            ) {
-                return res
-            }
-
-            /**
-             * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
-             */
-            const pronoun = PM.referenceMap[PM.map[userId]]
-
-            profileCardSection.unshift(<Pronoun pronoun={pronoun} />)
-        })
+        
 
         unpatchUpdateRows = before("updateRows", DCDChatManager, args => {
             const rows = JSON.parse(args[1]);
 
             for ( const row of rows ) {
                 if (row.type !== 1
-                    || !row?.message?.authorId
-                    || !PM.map[row?.message?.authorId]
-                    || PM.referenceMap[PM.map[row?.message?.authorId]] === "unspecified"
                 ) continue;
 
                 /**
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
-                const pronoun: string = PM.referenceMap[PM.map[row.message.authorId]];
-
+                const pronoun: string = "she/her";
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
