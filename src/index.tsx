@@ -41,7 +41,7 @@ export default {
                  */
                  const userId=row.message.authorId;
                  const profile = findByStoreName("UserProfileStore").getUserProfile(userId);
-                const pronoun: string = profile.pronouns ;
+                const pronoun: string = profile?.pronouns ;
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
