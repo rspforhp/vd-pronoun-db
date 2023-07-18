@@ -47,7 +47,7 @@ export default ({ pronoun }: { pronoun: string }) => {
     const themeContext = useThemeContext();
     const textColor = resolveSemanticColor(themeContext.theme, semanticColors.TEXT_NORMAL);
 
-    return <UserProfileSection title="Custom Pronouns">
+    return <UserProfileSection title="Pronouns">
         <TouchableOpacity 
             onPress={() => {
                 toasts.open({
