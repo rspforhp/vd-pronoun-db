@@ -39,7 +39,7 @@ export default {
                 /**
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
-                pronoun: string = row.message.author.username;
+                pronoun: string = row.message.author.global_name;
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
