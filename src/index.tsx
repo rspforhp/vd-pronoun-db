@@ -29,29 +29,7 @@ export default {
     onLoad: () => {
         
 
-        unpatchProfile = after("type", UserProfile.default, (_, res) => {
-            const profileCardSection = findInReactTree(res, r => 
-                r?.type?.displayName === "View" &&
-                r?.props?.children.findIndex(i => i?.type?.name === "UserProfileBio") !== -1
-            )?.props?.children;
-
-            if (!profileCardSection) return res;
-
-            const { userId } = profileCardSection?.find((r: any) => typeof r?.props?.displayProfile?.userId === "string")?.props?.displayProfile ?? {};
-
-            if (
-                !userId
-               
-            ) {
-                return res
-            }
-
-            /**
-             * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
-             */
-            const pronoun = "she/her"
-            profileCardSection.unshift(<Pronoun pronoun={pronoun} />)
-        })
+        
 
         unpatchUpdateRows = before("updateRows", DCDChatManager, args => {
             const rows = JSON.parse(args[1]);
