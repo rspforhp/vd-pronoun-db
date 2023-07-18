@@ -1,4 +1,5 @@
 import { findByProps, findByStoreName, findByName } from '@vendetta/metro';
+import { logger } from "@vendetta";
 import { constants, stylesheet, ReactNative } from '@vendetta/metro/common';
 import { after, before } from '@vendetta/patcher';
 import { storage } from '@vendetta/plugin';
