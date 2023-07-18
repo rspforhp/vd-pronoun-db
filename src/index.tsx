@@ -40,12 +40,7 @@ export default {
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
                  const userId=row.message.authorId;
-
-const ProfileFetcher = findByProps("fetchProfile", "getUser");
-
- ProfileFetcher.getUser(userId).then(() => Profiles.showUserProfile({ userId }))
-
-                const pronoun: string = "test";
+                const pronoun: string = UserStore.getUser(userId).username;
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
