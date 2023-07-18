@@ -34,7 +34,7 @@ import Icons from "./icons";
  * @param referenceMap: The mapping from shorthand names to full names
  * @func updateQueuedPronouns: Fetch 49 unique pronouns and set them to the map at a time from the PronounDB database.
  */
-import PronounManager from './pronouns';
+
 
 /**
  * @param Constants: Constant information used throughout the plugin

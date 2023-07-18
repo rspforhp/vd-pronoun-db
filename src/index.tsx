@@ -21,8 +21,6 @@ const styles = stylesheet.createThemedStyleSheet({
     }
 })
 
-let unpatchGetUser;
-let unpatchProfile;
 let unpatchUpdateRows;
 
 export default {
@@ -71,8 +69,7 @@ export default {
         /**
          * Unpatch the main patches
          */
-        unpatchGetUser?.();
-        unpatchProfile?.();
+       
         unpatchUpdateRows?.();
     },
 
