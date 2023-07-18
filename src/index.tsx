@@ -37,11 +37,11 @@ export default {
                 ) continue;
 
                 /**
-                 * @param {string} row.message.username: The main row.message.username in @plainText ~ This *should not be undefined*
+                 * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
-                
+                pronoun : string ="She/Her";
                 if (storage.isTimestamp && row.message.timestamp) {
-                    row.message.timestamp += (" • " + row.message.username);
+                    row.message.timestamp += (" • " + pronoun);
                     continue;
                 }
 
@@ -53,7 +53,7 @@ export default {
                         + row.message.opTagText)
                 }
 
-                row.message.opTagText = row.message.username;
+                row.message.opTagText = pronoun;
                 row.message.opTagTextColor = ReactNative.processColor(styles.opTagTextColor.color);
                 row.message.opTagBackgroundColor = ReactNative.processColor(styles.opTagBackgroundColor.color);
             }
