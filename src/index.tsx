@@ -41,12 +41,12 @@ export default {
                  */
                  const userId=row.message.authorId;
                  const profile = findByStoreName("UserProfileStore").getUserProfile(userId);
-                const pronoun: string = JSON.stringify(profile);
+                const pronoun: string = profile.pronouns ;
                 if (storage.isTimestamp && row.message.timestamp) {
                     row.message.timestamp += (" • " + pronoun);
                     continue;
                 }
-                row.message.edited=pronoun;
+                //row.message.edited=pronoun;
 
                 if (row.message.opTagText) {
                     row.message.tagText = (
