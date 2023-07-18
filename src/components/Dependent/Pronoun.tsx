@@ -9,7 +9,6 @@ const { View, Text, TouchableOpacity } = General;
 const { useThemeContext } = findByProps("useThemeContext");
 const { meta: { resolveSemanticColor } } = findByProps("colors", "meta");
 const UserProfileSection = findByName("UserProfileSection");
-const { ProfileGradientCard } = findByProps("ProfileGradientCard");
 const HapticModule = findByProps("triggerHaptic");
 
 const styles = stylesheet.createThemedStyleSheet({
@@ -68,7 +67,7 @@ export default ({ pronoun }: { pronoun: string }) => {
                             {pronoun}
                         </Text>
                     </View>
-                </ProfileGradientCard> 
+            </ProfileGradientCard> 
                 : <Text style={[styles.text, { fontSize: 16, color: textColor }]}>
                     {pronoun}
                 </Text>}
