@@ -41,13 +41,7 @@ export default {
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
                  const userId=row.message.authorId;
-                 fetchProfile(userId, {
-      withMutualGuilds: true,
-      withMutualFriendsCount: false,
-      friendToken: undefined,
-      guildId: null,
-      connectionsRoleId: undefined,
-    })
+                 
                  const profile = findByStoreName("UserProfileStore").getUserProfile(userId);
                 const pronoun: string = profile?.pronouns ;
                 if (storage.isTimestamp && row.message.timestamp) {
