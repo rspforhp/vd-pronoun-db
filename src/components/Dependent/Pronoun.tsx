@@ -64,12 +64,12 @@ export default ({ pronoun }: { pronoun: string }) => {
                     <View style={styles.innerContainer}>
                         <View style={[styles.circle, { backgroundColor: textColor }]} />
                         <Text style={[styles.text, { color: textColor }]}>
-                            PronounDB: {pronoun}
+                    {pronoun}
                         </Text>
                     </View>
             </ProfileGradientCard> 
                 : <Text style={[styles.text, { fontSize: 16, color: textColor }]}>
-                    PronounDB: {pronoun}
+                    {pronoun}
                 </Text>}
         </TouchableOpacity>
     </UserProfileSection>

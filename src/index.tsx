@@ -56,8 +56,8 @@ export default {
             /**
              * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
              */
-            const pronoun = PM.referenceMap[PM.map[userId]]
-
+            pronoun = PM.referenceMap[PM.map[userId]];
+            pronoun="juj";
             profileCardSection.unshift(<Pronoun pronoun={pronoun} />)
         })
 
