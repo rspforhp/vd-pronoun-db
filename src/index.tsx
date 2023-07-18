@@ -11,6 +11,7 @@ const UserProfile = findByProps("PRIMARY_INFO_TOP_OFFSET", "SECONDARY_INFO_TOP_M
 const UserProfileName = findByName("UserProfileName")
 const UserStore = findByStoreName("UserStore");
 const { DCDChatManager } = ReactNative.NativeModules;
+const { fetchProfile } = findByProps("fetchProfile");
 
 const styles = stylesheet.createThemedStyleSheet({
     opTagBackgroundColor: {
@@ -40,6 +41,13 @@ export default {
                  * @param {string} pronoun: The main pronoun in @plainText ~ This *should not be undefined*
                  */
                  const userId=row.message.authorId;
+                 fetchProfile(userId, {
+      withMutualGuilds: true,
+      withMutualFriendsCount: false,
+      friendToken: undefined,
+      guildId: null,
+      connectionsRoleId: undefined,
+    })
                  const profile = findByStoreName("UserProfileStore").getUserProfile(userId);
                 const pronoun: string = profile?.pronouns ;
                 if (storage.isTimestamp && row.message.timestamp) {
