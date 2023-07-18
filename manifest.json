@@ -1,10 +1,10 @@
 {
-    "name": "PronounDB",
+    "name": "Pronouns Label",
     "description": "A plugin to display people's pronouns as a Bot Tag.",
     "authors": [
         {
-            "name": "Rosie<3",
-            "id": "581573474296791211"
+            "name": "Miya",
+            "id": "281400851489095680"
         }
     ],
     "main": "src/index.tsx",
